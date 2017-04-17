@@ -1,0 +1,26 @@
+{
+    "minslice" : 1,
+    "maxslice" : 6400,
+    "basename" : "/groups/flyem/data/Hayworth/ForStevePlaza/PB_Crop_STITCHED_XYplaneData_CorrectedBlankFrame/iso.%04d.png",
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "79b84a98acb742cc8b8cbd2e517908ce",
+        "dataname": "grayscale"
+    },
+    "options": {
+        "create-pyramid": true,
+        "create-pyramid-jpeg": false,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+        "blocksize": 64,
+        "tilesize": 1024,
+        "offset": [0, 0, 0],
+        "blockwritelimit": 100,
+        "has-dvidmask": false,
+        "disable-original": false,
+        "blankdelimiter": 0,
+        "is-rawarray": true,
+        "pyramid-depth": 7,
+        "num-tasks": 128
+    }
+}

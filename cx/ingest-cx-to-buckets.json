@@ -26,6 +26,6 @@
         "blankdelimiter": 0,
         "is-rawarray": true,
         "pyramid-depth": 7,
-        "num-tasks": 128
+        "num-tasks": 512
     }
 }

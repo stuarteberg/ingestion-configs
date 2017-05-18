@@ -1,0 +1,33 @@
+{
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "92c88f47b0414b57b58e5d913650e14c",
+        "dataname": "column_26_fine_pastix02_down2x_grayscale"
+    },
+    "options": {
+	"minslice" : 0,
+	"maxslice" : 1,
+	"basename" : "/groups/flyem/data/Z0115-22_Sec26/align3/mini50/mini.%05d.png",
+
+        "log-collector-port": 3000,
+        "log-collector-directory": "",
+
+        "create-pyramid": false,
+        "create-pyramid-jpeg": true,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+
+        "disable-original": false,
+        "pyramid-depth": 7,
+
+        "blocksize": 64,
+        "blockwritelimit": 0,
+
+        "offset": [0, 0, 0],
+        "tilesize": 1024,
+        "has-dvidmask": false,
+        "blankdelimiter": 0,
+        "is-rawarray": true,
+        "num-tasks": 128
+    }
+}

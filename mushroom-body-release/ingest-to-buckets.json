@@ -1,0 +1,44 @@
+{
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "ee78982c87b14d008bb3f93e9e546c10",
+        "dataname": "grayscaleview"
+    },
+    "options": {
+        "minslice" : 0,
+        "maxslice" : 14624,
+        "basename" : "/groups/flyem/data/MB-Z0613-06/iso/iso.%05d.png",
+
+        "log-collector-port": 3000,
+        "log-collector-directory": "./task-logs",
+
+        "worker-initialization": {
+            "script-path": "./launch-worker-dvid.sh",
+            "script-args": ["mushroom-body-release.toml"],
+            "launch-delay": 5,
+            "log-dir": "./dvid-logs",
+	    "also-run-on-driver": true
+        },
+
+        "create-pyramid": false,
+        "create-pyramid-jpeg": true,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+
+        "disable-original": false,
+        "pyramid-depth": 7,
+        "skipped-pyramid-levels": [],
+
+        "blocksize": 64,
+        "blockwritelimit": 0,
+
+        "offset": [0, 0, 0],
+        "tilesize": 1024,
+        "has-dvidmask": false,
+        "blankdelimiter": 255,
+        "is-rawarray": true,
+
+	"corespertask": 2,
+        "num-tasks": 128
+    }
+}

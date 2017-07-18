@@ -2,7 +2,7 @@
     "dvid-info": {
         "dvid-server": "127.0.0.1:8000",
         "uuid": "ee78982c87b14d008bb3f93e9e546c10",
-        "dataname": "grayscaleview"
+        "dataname": "grayscale"
     },
     "options": {
         "minslice" : 0,
@@ -20,14 +20,15 @@
 	    "also-run-on-driver": true
         },
 
-        "create-pyramid": false,
-        "create-pyramid-jpeg": true,
+        "create-pyramid": true,
+
+        "create-pyramid-jpeg": false,
         "create-tiles": false,
         "create-tiles-jpeg": false,
 
         "disable-original": false,
-        "pyramid-depth": 7,
-        "skipped-pyramid-levels": [],
+        "pyramid-depth": 1,
+        "skipped-pyramid-levels": [1],
 
         "blocksize": 64,
         "blockwritelimit": 0,
@@ -39,6 +40,6 @@
         "is-rawarray": true,
 
 	"corespertask": 2,
-        "num-tasks": 128
+        "num-tasks": 256
     }
 }

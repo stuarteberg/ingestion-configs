@@ -1,0 +1,45 @@
+{
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "{{UUID}}",
+        "dataname": "grayscale"
+    },
+    "options": {
+        "minslice" : 0,
+        "maxslice" : {{MAX_SLICE_NUM}},
+        "basename" : "{{PATH_TO_SLICES}}/iso.%05d.png",
+
+        "log-collector-port": 3000,
+        "log-collector-directory": "./task-logs",
+
+        "worker-initialization": {
+            "script-path": "./worker-dvid-files/launch-worker-dvid.sh",
+            "script-args": ["worker-dvid-config.toml"],
+            "launch-delay": 5,
+            "log-dir": "./worker-dvid-files/dvid-logs",
+	    "also-run-on-driver": true
+        },
+
+        "create-pyramid": true,
+
+        "create-pyramid-jpeg": false,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+
+        "disable-original": false,
+        "pyramid-depth": 7,
+        "skipped-pyramid-levels": [],
+
+        "blocksize": 64,
+        "blockwritelimit": 0,
+
+        "offset": [0, 0, 0],
+        "tilesize": 1024,
+        "has-dvidmask": false,
+        "blankdelimiter": 255,
+        "is-rawarray": true,
+
+	"corespertask": 2,
+        "num-tasks": 256
+    }
+}

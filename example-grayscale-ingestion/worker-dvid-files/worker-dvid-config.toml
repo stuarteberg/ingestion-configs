@@ -1,0 +1,20 @@
+[server]
+httpAddress = ":8000"
+rpcAddress = ":8001"
+webClient = "/groups/flyem/proj/cluster/miniconda/envs/flyem/dvid-distro/dvid-console"
+instance_id_gen = "sequential"
+instance_id_start = 100  # new ids start at least from this.
+
+note = """
+{"source": "gs://FIXME-BUCKET-NAME"}
+"""
+
+[logging]
+# Note: This logfile location will be overwritten by launch-worker-dvid.sh
+logfile = "/tmp/dvid-logs/worker-dvid.log"
+max_log_size = 500 # MB
+max_log_age = 30   # days
+[store]
+    [store.mutable]
+        engine = "gbucket"
+        bucket= "FIXME-BUCKET-NAME"

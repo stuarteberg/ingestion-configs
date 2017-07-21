@@ -16,9 +16,9 @@ THIS_SCRIPT_DIR = os.path.split(__file__)[0]
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--num-workers', '-n', type=int, default=1)
-    parser.add_argument('--driver-slots', type=int, default=16)
-    parser.add_argument('--iteration-id', '-i')
+    parser.add_argument('--num-workers', '-n', type=int, default=1, help='How many worker nodes to use in the cluster (not inclduing the master)')
+    parser.add_argument('--driver-slots', type=int, default=16, help='How many slots to use for the driver process.')
+    parser.add_argument('--iteration-id', '-i', help='An arbitrary string that will be added to the bjob name. Default: a timestamp.')
     parser.add_argument('workflow_type')
     parser.add_argument('config_file')
     args = parser.parse_args()

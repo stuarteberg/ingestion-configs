@@ -1,3 +1,8 @@
 *~
 *.pyc
 logs/
+bjob-logs/
+task-logs/
+dvid-logs/
+worker-dvid-tomls/
+

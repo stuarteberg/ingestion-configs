@@ -1,0 +1,33 @@
+{
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "f0d5ddfa18794e2cabde4018691328bc",
+        "dataname": "grayscale"
+    },
+    "options": {
+        "minslice" : 0,
+        "maxslice" : 5555,
+        "basename" : "/nrs/flyem/render/scapes/ackermand/fly_em_pre_iso/column_25_fine_07/scape_20170606_151220/000/%05d.png",
+
+        "log-collector-port": 3000,
+        "log-collector-directory": "./logs",
+
+        "create-pyramid": false,
+        "create-pyramid-jpeg": true,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+
+        "disable-original": false,
+        "pyramid-depth": 7,
+
+        "blocksize": 64,
+        "blockwritelimit": 0,
+
+        "offset": [0, 0, 0],
+        "tilesize": 1024,
+        "has-dvidmask": false,
+        "blankdelimiter": 0,
+        "is-rawarray": true,
+        "num-tasks": 256
+    }
+}

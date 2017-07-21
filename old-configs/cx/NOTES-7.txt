@@ -1,0 +1,7 @@
+job-ID     prior   name       user         state submit/start at     queue                                       jclass                                      slots ja-task-ID 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  19636656 0.67934 spark-clus bergs        r     04/21/2017 18:57:21 hadoop2@h01u06.int.janelia.org              spark.default                                   9        
+
+
+Collected logs are here:
+h01u06.int.janelia.org:/tmp/ef8e22ec-26e5-11e7-a6c7-90b11c2174d1/

@@ -58,24 +58,34 @@ if $WRITE_WORKER_LOGS_TO_NFS; then
     # Instead of using the same TOML for every worker (and logging to /tmp)
     # Copy the toml for each worker and overwrite the logfile location with something unique
     WORKER_TOML=${DVID_CONFIG_DIR}/worker-dvid-tomls/$(uname -n)_${DVID_CONFIG_NAME}
-    mkdir -p $(dirname ${WORKER_TOML})
     WORKER_LOG=${DVID_CONFIG_DIR}/dvid-logs/$(uname -n)_${DVID_CONFIG_NAME}.log
+
+    mkdir -p $(dirname ${WORKER_TOML})
+    mkdir -p $(dirname ${WORKER_LOG})
+
     sed 's|logfile =.*|logfile = "'${WORKER_LOG}'"|g' < ${DVID_TOML} > ${WORKER_TOML}
     DVID_TOML=${WORKER_TOML}
     
-    echo "[$(date)] Launching DVID from .bashrc ..." >> ${WORKER_LOG}
+    echo "[$(date)] Launching Worker DVID..." >> ${WORKER_LOG}
 fi
 
 ##
 ## CUSTOMIZE HERE:
 ## Choose which dvid build to use -- from conda or custom-built in Buildem
 ##
-DVID_PREFIX=${FLYEM_ENV}   # from conda
-#DVID_PREFIX=${BUILDEM_DIR} # from buildem
+#DVID_PREFIX=${FLYEM_ENV}   # from conda
+DVID_PREFIX=${BUILDEM_DIR} # from buildem
 
 export PATH=${DVID_PREFIX}/bin:${PATH}
 export LD_LIBRARY_PATH=${DVID_PREFIX}/lib:${LD_LIBRARY_PATH}
 
 echo "Launching DVID:"
 echo "${DVID_PREFIX}/bin/dvid -verbose serve \"${DVID_TOML}\""
-${DVID_PREFIX}/bin/dvid -verbose serve "${DVID_TOML}"
+${DVID_PREFIX}/bin/dvid -verbose serve "${DVID_TOML}" &
+
+DVID_PID=$!
+
+# If we're terminated with SIGTERM, send SIGTERM to the subprocess.
+trap 'kill -TERM $DVID_PID' EXIT
+
+wait $DVID_PID

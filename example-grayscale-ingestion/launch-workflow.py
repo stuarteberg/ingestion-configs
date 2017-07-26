@@ -18,6 +18,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--num-workers', '-n', type=int, default=1, help='How many worker nodes to use in the cluster (not inclduing the master)')
     parser.add_argument('--driver-slots', type=int, default=16, help='How many slots to use for the driver process.')
+    parser.add_argument('--max-hours', type=int, default=24, help='The maximum runtime length before LSF auto-kills the job')
     parser.add_argument('--iteration-id', '-i', help='An arbitrary string that will be added to the bjob name. Default: a timestamp.')
     parser.add_argument('workflow_type')
     parser.add_argument('config_file')
@@ -25,6 +26,7 @@ def main():
 
     num_workers = args.num_workers
     driver_slots = args.driver_slots
+    max_hours = args.max_hours
     workflow_type = args.workflow_type
     job_name = os.path.splitext(os.path.basename(args.config_file))[0]
     config_file = os.path.abspath(args.config_file)
@@ -41,6 +43,7 @@ def main():
     cmd = '{LSF_SUBMIT_SCRIPT} \
              --driver-slots={driver_slots} \
              --job-log-dir={THIS_SCRIPT_DIR}/bjob-logs \
+             --max-hours={max_hours} \
              {num_workers} \
              {workflow_type} \
              {job_name}-{iteration_id} \

@@ -20,9 +20,8 @@
 	    "also-run-on-driver": true
         },
 
-        "create-pyramid": true,
-
-        "create-pyramid-jpeg": false,
+        "create-pyramid": false,
+        "create-pyramid-jpeg": true,
         "create-tiles": false,
         "create-tiles-jpeg": false,
 
@@ -31,15 +30,15 @@
         "skipped-pyramid-levels": [],
 
         "blocksize": 64,
-        "blockwritelimit": 0,
+        "blockwritelimit": 100,
 
         "offset": [0, 0, 0],
         "tilesize": 1024,
         "has-dvidmask": false,
-        "blankdelimiter": 255,
+        "blankdelimiter": 0,
         "is-rawarray": true,
 
-	"corespertask": 2,
-        "num-tasks": 256
+	"corespertask": 1,
+        "num-tasks": 512
     }
 }

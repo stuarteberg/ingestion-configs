@@ -58,7 +58,7 @@ if $WRITE_WORKER_LOGS_TO_NFS; then
     # Instead of using the same TOML for every worker (and logging to /tmp)
     # Copy the toml for each worker and overwrite the logfile location with something unique
     WORKER_TOML=${DVID_CONFIG_DIR}/worker-dvid-tomls/$(uname -n)_${DVID_CONFIG_NAME}
-    WORKER_LOG=${DVID_CONFIG_DIR}/dvid-logs/$(uname -n)_${DVID_CONFIG_NAME}.log
+    WORKER_LOG=${DVID_CONFIG_DIR}/worker-dvid-logs/$(uname -n)_${DVID_CONFIG_NAME}.log
 
     mkdir -p $(dirname ${WORKER_TOML})
     mkdir -p $(dirname ${WORKER_LOG})

@@ -6,8 +6,8 @@
     },
     "options": {
         "minslice" : 0,
-        "maxslice" : {{MAX_SLICE_NUM}},
-        "basename" : "{{PATH_TO_SLICES}}/iso.%05d.png",
+        "maxslice" : {{MAX_SLICE_NUMBER}},
+        "basename" : "{{SLICE_FILE_MATCH_PATTERN}}-%05d.tif",
 
         "log-collector-port": 3000,
         "log-collector-directory": "./task-logs",
@@ -16,7 +16,7 @@
             "script-path": "./worker-dvid-files/launch-worker-dvid.sh",
             "script-args": ["worker-dvid-config.toml"],
             "launch-delay": 5,
-            "log-dir": "./worker-dvid-files/dvid-logs",
+            "log-dir": "./worker-dvid-files/worker-dvid-logs",
 	    "also-run-on-driver": true
         },
 

@@ -54,6 +54,7 @@ def main():
     parser.add_argument('--create-bucket', action='store_true',
                         help='If provided, the bucket will be created first using gsutil. '
                              'Otherwise, the bucket is assumed to exist.')
+    parser.add_argument('--toml-path')
     parser.add_argument('bucket_name')
     parser.add_argument('repo_name')
     parser.add_argument('repo_description')
@@ -75,14 +76,20 @@ def main():
     if args.create_bucket:
         subprocess.check_call('gsutil mb -c regional -l us-east4 -p dvid-em gs://{}'.format(args.bucket_name), shell=True)
 
-    toml_path = '{}.toml'.format(args.bucket_name)
-    with open(toml_path, 'w') as f_toml:
+    if not args.toml_path:
+        if os.path.exists('worker-dvid-files'):
+            args.toml_path = 'worker-dvid-files/worker-dvid-config.toml'
+        else:
+            args.toml_path = '{}.toml'.format(args.bucket_name)
+
+    print "Writing TOML to {}".format(args.toml_path)
+    with open(args.toml_path, 'w') as f_toml:
         f_toml.write(get_toml_text(args.bucket_name, DVID_CONSOLE_DIR, LOG_DIR))
     
-    print "Wrote {}".format(toml_path)
+    print "Wrote {}".format(args.toml_path)
     
     try:
-        cmd = 'dvid -verbose serve {toml_path}'.format(toml_path=toml_path)
+        cmd = 'dvid -verbose serve {toml_path}'.format(toml_path=args.toml_path)
         print cmd
         dvid_proc = subprocess.Popen(cmd, shell=True)
         

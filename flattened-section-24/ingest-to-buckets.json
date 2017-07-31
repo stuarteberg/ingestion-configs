@@ -1,0 +1,44 @@
+{
+    "dvid-info": {
+        "dvid-server": "127.0.0.1:8000",
+        "uuid": "0f59afee08614407a998aae22fe4b9b1",
+        "dataname": "grayscale"
+    },
+    "options": {
+        "minslice" : 0,
+        "maxslice" : 24016,
+        "basename" : "/groups/flyem/data/Z0115-22_Sec24/flatten2/flattened/zcorr.%05d-flattened.tif",
+
+        "log-collector-port": 3000,
+        "log-collector-directory": "./task-logs",
+
+        "worker-initialization": {
+            "script-path": "./worker-dvid-files/launch-worker-dvid.sh",
+            "script-args": ["worker-dvid-config.toml"],
+            "launch-delay": 5,
+            "log-dir": "./worker-dvid-files/dvid-logs",
+	    "also-run-on-driver": true
+        },
+
+        "create-pyramid": false,
+        "create-pyramid-jpeg": true,
+        "create-tiles": false,
+        "create-tiles-jpeg": false,
+
+        "disable-original": false,
+        "pyramid-depth": 7,
+        "skipped-pyramid-levels": [],
+
+        "blocksize": 64,
+        "blockwritelimit": 100,
+
+        "offset": [0, 0, 0],
+        "tilesize": 1024,
+        "has-dvidmask": false,
+        "blankdelimiter": 0,
+        "is-rawarray": true,
+
+	"corespertask": 1,
+        "num-tasks": 512
+    }
+}

@@ -38,7 +38,10 @@
         "blankdelimiter": 0,
         "is-rawarray": true,
 
-	"corespertask": 1,
-        "num-tasks": 512
+        "num-tasks": 512,
+        "spark-config": {
+            "spark.task.cpus": 1,
+            "spark.task.maxFailures": 1
+        }
     }
 }

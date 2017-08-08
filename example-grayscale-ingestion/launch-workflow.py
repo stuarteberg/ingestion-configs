@@ -45,6 +45,10 @@ def main():
     bjob_log_dir = job_name + "/bjob-logs"
     mkdir_p(bjob_log_dir)
 
+    # Janelia LSF behavior changed in August.
+    # Now the cluster log location is set via this environment variable.
+    os.environ['SPARK_LOG_DIR'] = abspath(bjob_log_dir)
+
     config_data = json.load(open(config_file_copy, 'r'))
     try:
         task_log_dir = config_data["options"]["log-collector-directory"]
